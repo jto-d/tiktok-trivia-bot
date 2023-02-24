@@ -34,7 +34,7 @@ cv2.threshold(gray, 0,255,cv2.THRESH_BINARY| cv2.THRESH_OTSU)[1]
 # memory usage with image i.e. adding image to memory
 filename = "{}.png".format(os.getpid())
 cv2.imwrite(filename, gray)
-text = pytesseract.image_to_string(Image.open('57214.png'))
+text = pytesseract.image_to_string(Image.open('p.png'))
 os.remove(filename)
 # print(text)
  
@@ -46,6 +46,7 @@ os.remove(filename)
 # question processing
 question, answers = text.split('?')
 question = question.replace('\n', ' ') + "?"
+question = question.replace('"', '')
 
 # search google
 url = "https://www.google.co.in/search?q=" + question
